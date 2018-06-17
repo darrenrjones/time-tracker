@@ -1,7 +1,9 @@
-const initialState  = {
-  timers: []
-};
+import { combineReducers } from 'redux';
 
-export const timerReducer = (state=initialState, action) => {
-  return state;
-};
+import timerReducer from './timerReducer';
+
+const rootReducer = combineReducers({
+  timerReducer
+})
+
+export default rootReducer;

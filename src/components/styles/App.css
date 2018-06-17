@@ -1,9 +1,26 @@
 .App {
   text-align: center;
-  color: purple;
 }
 
+.timer-display {
+  text-align: center;
+  border: 1px solid black;
+  max-width: 250px;
+  margin: auto;
+  margin-top: 100px;
+  background-color: rgba(128, 128, 128, 0.822);  
+}
 
+.buttoncontainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;  
+}
+
+.buttons {
+  width: 70px;
+  height: 40px;
+}
 
 
 /* @keyframes App-logo-spin {
