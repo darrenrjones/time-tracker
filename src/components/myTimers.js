@@ -6,21 +6,24 @@ import Timer from './timer';
 export class MyTimers extends React.Component{
 
   async startTime(name) {    
-    await this.props.dispatch(toggleStatus()); 
+    await this.props.dispatch(toggleStatus(name)); 
     this.runTime(name);   
   }
 
   runTime(name){
-    if(this.props.status === true){      
+    const timerStatus = this.props.timers.filter((timer) => {
+      return timer.name === name
+    })               
+    if(timerStatus[0].status === true){      
       setTimeout(() => {          
         this.props.dispatch(startTime(name));
-        this.runTime();
+        this.runTime(name);
       }, 1000);
     }
   }
 
-  stopTime(){
-    this.props.dispatch(toggleStatus());
+  stopTime(name){
+    this.props.dispatch(toggleStatus(name));
   }
 
   render(){
@@ -29,8 +32,8 @@ export class MyTimers extends React.Component{
         name={timer.name}
         ticks={timer.ticks} 
         startTime={() => this.startTime(timer.name)}
-        stopTime={() => this.stopTime()}
-        status={this.props.status}
+        stopTime={() => this.stopTime(timer.name)}
+        status={timer.status}
       />      
     </li>
     )
@@ -45,8 +48,7 @@ export class MyTimers extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  timers: state.timerReducer.timers,
-  status: state.timerReducer.status
+  timers: state.timerReducer.timers
 })
 
 export default connect(mapStateToProps)(MyTimers);

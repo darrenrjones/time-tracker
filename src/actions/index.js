@@ -12,8 +12,9 @@ export const startTime = (name) => ({
 });
 
 export const TOGGLE_STATUS = 'TOGGLE_STATUS';
-export const toggleStatus = () => ({
-    type: TOGGLE_STATUS,   
+export const toggleStatus = (name) => ({
+    type: TOGGLE_STATUS,
+    name   
 });
 
 export const fetchTimers = () => (dispatch) => {
